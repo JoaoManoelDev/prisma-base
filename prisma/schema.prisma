@@ -22,8 +22,8 @@ model Courses {
   created_at  DateTime @default(now())
   teachers_id String   @unique
 
-  teacher        Teachers         @relation(fields: [teachers_id], references: [id])
-  coursesModules CoursesModules[]
+  teacher Teachers         @relation(fields: [teachers_id], references: [id])
+  modules CoursesModules[]
 
   @@map("courses")
 }
@@ -34,21 +34,19 @@ model Modules {
   description String
   created_at  DateTime @default(now())
 
-  coursesModules CoursesModules[]
+  courses CoursesModules[]
 
   @@map("modules")
 }
 
 model CoursesModules {
-  id String @id @default(uuid())
-
-  course_id String
-  module_id String
+  id         String   @id @default(uuid())
+  course_id  String
+  module_id  String
+  created_at DateTime @default(now())
 
   course Courses @relation(fields: [course_id], references: [id])
   module Modules @relation(fields: [module_id], references: [id])
-
-  created_at DateTime @default(now())
 
   @@map("courses_modules")
 }
