@@ -3,9 +3,9 @@ import { prisma } from './lib/prisma'
 async function main() {
   const response = await prisma.courses.create({
     data: {
-      name: 'Curso de MySQL',
+      name: 'Curso de NodeJS',
       duration: 200,
-      description: 'Curso de MySQL básico.'
+      description: 'Curso de NodeJs básico.'
     }
   })
 
